@@ -1,0 +1,8 @@
+{
+  "minPossiblePrice": 7,
+  "maxAddedPrice": 5,
+  "addedPricePercentage": 0.2,
+  "ordersConsideredPercentage": 0.3,
+  "email": "",
+  "password": ""
+}
