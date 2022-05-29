@@ -21,3 +21,4 @@ The price generation might be easier to understand in code rather then words so 
 ### TODO:
 
 * pricing of ranked items such as mods. currently these are just ignored.
+* having total price seperated by items that hit the minimum price and how much it would have been if it used the real price.
