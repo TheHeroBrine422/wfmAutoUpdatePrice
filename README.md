@@ -18,3 +18,6 @@ The price generation might be easier to understand in code rather then words so 
   "password": ""                     // warframe market password
 }
 ```
+### TODO:
+
+* pricing of ranked items such as mods. currently these are just ignored.
