@@ -18,3 +18,7 @@ The price generation might be easier to understand in code rather then words so 
   "password": ""                     // warframe market password
 }
 ```
+
+### TODO:
+
+have the order list that it checks ignore your own orders.
