@@ -3,6 +3,12 @@ const fs = require('fs')
 
 Settings = JSON.parse(fs.readFileSync("Settings.json"))
 
+function delay(milisec) {
+    return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec);
+    })
+}
+
 /*
 API Data Objects:
 Self Orders (https://api.warframe.market/v1/profile/Hero422/orders):
@@ -101,6 +107,7 @@ Other Orders (https://api.warframe.market/v1/items/{url_name}/orders):
 
   for (var i = 0; i < orders.length; i++) {
     if (orders[i].mod_rank == 0 || orders[i].mod_rank == null) { // ignore ranked up mods which will not be accurately priced.
+      await delay(Settings.delayBetweenItem)
       console.log(orders[i].item.en.item_name)
       try {
         itemOrders = await axios({
@@ -116,7 +123,7 @@ Other Orders (https://api.warframe.market/v1/items/{url_name}/orders):
         itemOrders = itemOrders.data.payload.orders
 
         for (var j = 0; j < itemOrders.length; j++) { // filter out invalid orders (user status, platform, only sell orders)
-          if (itemOrders[j].user.status != 'ingame' || itemOrders[j].order_type == 'buy' || itemOrders[j].platform != 'pc') {
+          if (itemOrders[j].user.status != 'ingame' || itemOrders[j].order_type == 'buy' || itemOrders[j].platform != 'pc' || itemOrders[j].user.ingame_name == user.ingame_name) {
             itemOrders.splice(j, 1)
             j--
           }
@@ -124,7 +131,7 @@ Other Orders (https://api.warframe.market/v1/items/{url_name}/orders):
 
         itemOrders.sort((a, b) => parseFloat(a.platinum) - parseFloat(b.platinum)); // sort based on price
 
-        ordersConsidered = Math.ceil(Settings.ordersConsideredPercentage * itemOrders.length) // remove extra high priced orders
+        ordersConsidered = Math.min(2, Math.ceil(Settings.ordersConsideredPercentage * itemOrders.length)) // remove extra high priced orders
         for (var j = ordersConsidered; j < itemOrders.length; j++) {
           itemOrders.splice(j, 1)
           j--

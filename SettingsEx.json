@@ -4,5 +4,6 @@
   "addedPricePercentage": 0.2,
   "ordersConsideredPercentage": 0.3,
   "email": "",
-  "password": ""
+  "password": "",
+  "delayBetweenItem": 1000
 }
