@@ -22,3 +22,4 @@ The price generation might be easier to understand in code rather then words so 
 
 * pricing of ranked items such as mods. currently these are just ignored.
 * having total price seperated by items that hit the minimum price and how much it would have been if it used the real price.
+* realize when there are no online orders and either ignore these items or revert to some other pricing model (stats page graph maybe)
