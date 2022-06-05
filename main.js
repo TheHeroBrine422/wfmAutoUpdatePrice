@@ -108,7 +108,7 @@ Other Orders (https://api.warframe.market/v1/items/{url_name}/orders):
   for (var i = 0; i < orders.length; i++) {
     if (orders[i].mod_rank == 0 || orders[i].mod_rank == null) { // ignore ranked up mods which will not be accurately priced.
       await delay(Settings.delayBetweenItem)
-      console.log(orders[i].item.en.item_name)
+      console.log(i+"/"+orders.length+" - "+orders[i].item.en.item_name)
       try {
         itemOrders = await axios({
           "method": "get",
